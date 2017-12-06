@@ -1,0 +1,21 @@
+uuid: ea634e43-8389-444e-8f2f-eb41d2fd7afa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sent_date
+    - node.type.mail
+id: node.mail.field_sent_date
+field_name: field_sent_date
+entity_type: node
+bundle: mail
+label: 'Sent date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1507176978
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

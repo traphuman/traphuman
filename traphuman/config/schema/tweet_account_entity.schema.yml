@@ -1,0 +1,15 @@
+traphuman.tweet_account_entity.*:
+  type: config_entity
+  label: 'Tweet account entity config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    account:
+      type: string
+      label: 'Tweet account'

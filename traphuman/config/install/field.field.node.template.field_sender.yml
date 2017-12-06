@@ -1,0 +1,19 @@
+uuid: e5909197-01a7-4d29-b910-e8ded79c391a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sender
+    - node.type.template
+id: node.template.field_sender
+field_name: field_sender
+entity_type: node
+bundle: template
+label: Sender
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: 4387f9ab-b28c-45fe-9ea0-29073698a5b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_percent_link
+    - node.type.edition
+id: node.edition.field_percent_link
+field_name: field_percent_link
+entity_type: node
+bundle: edition
+label: 'Percent link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 100
+  prefix: ''
+  suffix: '%'
+field_type: decimal

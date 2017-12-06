@@ -1,0 +1,19 @@
+uuid: d623a047-b538-4c18-9525-666c3b3dbc41
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_company_suplantted
+    - node.type.edition
+id: node.edition.field_company_suplantted
+field_name: field_company_suplantted
+entity_type: node
+bundle: edition
+label: 'Company suplantted'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

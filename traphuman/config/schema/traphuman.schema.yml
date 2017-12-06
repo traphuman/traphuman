@@ -1,0 +1,11 @@
+traphuman.settings:
+  type: config_object
+  label: 'Traphuman Config settings'
+  mapping:
+    traphuman:
+      type: mapping
+      label: 'Traphuman settings'
+      mapping:
+        maxsendsbycron:
+          type: integer
+          label: 'Number of mails send in each cron execution'

@@ -1,0 +1,21 @@
+uuid: 5f518223-fcc9-4ff6-a4ff-ba3cb79ed7e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_attachment_click_date
+    - node.type.mail
+id: node.mail.field_attachment_click_date
+field_name: field_attachment_click_date
+entity_type: node
+bundle: mail
+label: 'Attachment click date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1507177043
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

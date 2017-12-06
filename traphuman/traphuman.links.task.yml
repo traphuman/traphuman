@@ -1,0 +1,35 @@
+traphuman.campaign_list:
+  route_name: traphuman.campaign_list
+  title: Campaign list
+  base_route: traphuman.campaign_list
+  weight: 1
+traphuman.template_list:
+  route_name: traphuman.template_list
+  title: Template list
+  base_route: traphuman.campaign_list
+  weight: 2
+traphuman.contact_list:
+  route_name: traphuman.contact_list
+  title: Contact list
+  base_route: traphuman.campaign_list
+  weight: 3
+traphuman.contactgroup_list:
+  route_name: traphuman.contactgroup_list
+  title: Contact group list
+  base_route: traphuman.campaign_list
+  weight: 4
+traphuman.osint_tweets_consult:
+  route_name: traphuman.osint_tweetconsult
+  title: Tweet consult
+  base_route: traphuman.osint_tweetconsult
+  weight: 1
+traphuman.osint_tweetconsult_byday:
+  route_name: traphuman.osint_tweetconsult_byday
+  title: Tweet consult times
+  base_route: traphuman.osint_tweetconsult
+  weight: 2
+traphuman.osint_tweetconsult_famousauthor:
+  route_name: traphuman.osint_tweetconsult_famousauthor
+  title: Tweet famous author
+  base_route: traphuman.osint_tweetconsult
+  weight: 3

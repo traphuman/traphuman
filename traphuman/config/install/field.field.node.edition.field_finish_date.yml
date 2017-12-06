@@ -1,0 +1,21 @@
+uuid: 4b0db87d-6dbb-4bdd-ae6d-47c0ba904ac3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_finish_date
+    - node.type.edition
+id: node.edition.field_finish_date
+field_name: field_finish_date
+entity_type: node
+bundle: edition
+label: 'Finish date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1506946024
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

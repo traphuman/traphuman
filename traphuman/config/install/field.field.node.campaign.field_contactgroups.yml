@@ -1,0 +1,28 @@
+uuid: 60e6a28e-bc49-4e0a-8d86-520dac25fe72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contactgroups
+    - node.type.campaign
+    - node.type.contactgroup
+id: node.campaign.field_contactgroups
+field_name: field_contactgroups
+entity_type: node
+bundle: campaign
+label: 'Contact Groups'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      contactgroup: contactgroup
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

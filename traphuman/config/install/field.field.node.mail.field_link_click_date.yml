@@ -1,0 +1,21 @@
+uuid: aae19413-089c-42d5-ae77-fb6a9765f9b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link_click_date
+    - node.type.mail
+id: node.mail.field_link_click_date
+field_name: field_link_click_date
+entity_type: node
+bundle: mail
+label: 'Link click date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1507177016
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

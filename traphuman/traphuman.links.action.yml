@@ -1,0 +1,43 @@
+traphuman.add_campaign:
+  route_name: traphuman.add_campaign
+  title: 'Add new campaign'
+  appears_on:
+    - traphuman.campaign_list
+traphuman.add_contact:
+  route_name: traphuman.add_contact
+  title: 'Add new contact'
+  appears_on:
+    - traphuman.contact_list
+traphuman.add_contactgroup:
+  route_name: traphuman.add_contactgroup
+  title: 'Add new contact group'
+  appears_on:
+    - traphuman.contactgroup_list
+traphuman.import_templates:
+  route_name: traphuman.template_import
+  title: 'Import templates'
+  appears_on:
+    - traphuman.template_list
+traphuman.import_git_templates:
+  route_name: traphuman.template_git_import
+  title: 'Import Git templates'
+  appears_on:
+    - traphuman.template_list
+traphuman.template_wizard:
+  route_name: traphuman.template_wizard_step1
+  title: 'Use template wizard'
+  appears_on:
+    - traphuman.template_list
+entity.tweet_account_entity.add_form:
+  route_name: entity.tweet_account_entity.add_form
+  title: 'Add Tweet account'
+  appears_on:
+    - entity.tweet_account_entity.collection
+    - traphuman.osint_tweetconsult_famousauthor
+
+entity.tweet_alarm_entity.add_form:
+  route_name: entity.tweet_alarm_entity.add_form
+  title: 'Add Tweet alarm entity'
+  appears_on:
+    - entity.tweet_alarm_entity.collection
+

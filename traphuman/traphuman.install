@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for Traphuman.
+ */
+
+use Drupal\user\Entity\Role;
+
+/**
+ * Implements hook_install().
+ */
+function traphuman_install(){
+  $role = Role::create(['id' => 'htdirector', 'label' => 'Traphuman Director']);
+  $role->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+
+function traphuman_uninstall(){
+  $role = Role::load('htdirector');
+  $role->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('campaign');
+  $content_type->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('template');
+  $content_type->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('contact');
+  $content_type->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('contactgroup');
+  $content_type->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('edition');
+  $content_type->delete();
+  $content_type = \Drupal::entityTypeManager()->getStorage('node_type')->load('mail');
+  $content_type->delete();
+}

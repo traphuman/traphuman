@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - core.entity_view_mode.node.teaser
+        - field.field.node.template.body
+        - field.field.node.template.field_sender
+        - node.type.template
+    module:
+        - text
+        - user
+id: node.template.teaser
+targetEntityType: node
+bundle: template
+mode: teaser
+content:
+    body:
+        label: hidden
+        type: text_summary_or_trimmed
+        weight: 101
+        settings:
+            trim_length: 600
+        third_party_settings: {  }
+    links:
+        weight: 100
+hidden: {  }

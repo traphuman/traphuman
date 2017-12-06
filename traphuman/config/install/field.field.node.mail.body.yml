@@ -1,0 +1,24 @@
+uuid: 8d2d1e45-f3f8-4285-bdef-bddee70454fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.mail
+  module:
+    - text
+_core:
+  default_config_hash: Wfok4yZUqCQ7jSSx7cl4ZVujKX4I6nWN9IKmC3GcOa0
+id: node.mail.body
+field_name: body
+entity_type: node
+bundle: mail
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

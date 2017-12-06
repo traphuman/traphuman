@@ -1,0 +1,47 @@
+uuid: 04d04aec-5695-46d7-974a-05dd4b89ec32
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.edition.body
+    - field.field.node.edition.field_attachment
+    - field.field.node.edition.field_campaign
+    - field.field.node.edition.field_finish_date
+    - field.field.node.edition.field_percent_attachment
+    - field.field.node.edition.field_percent_link
+    - field.field.node.edition.field_percent_open
+    - field.field.node.edition.field_percent_sent
+    - field.field.node.edition.field_start_date
+    - node.type.edition
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: bs3d6jnZCiyXMjRrmoHcDGeK2osDwxYxXqYz-ohX-ME
+id: node.edition.teaser
+targetEntityType: node
+bundle: edition
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_attachment: true
+  field_campaign: true
+  field_finish_date: true
+  field_percent_attachment: true
+  field_percent_link: true
+  field_percent_open: true
+  field_percent_sent: true
+  field_start_date: true
+  langcode: true

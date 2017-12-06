@@ -1,0 +1,5 @@
+.toolbar-icon-traphuman-admin-traphuman:before,
+.toolbar-icon-traphuman-admin-traphuman:active:before,
+.toolbar-icon-traphuman-admin-traphuman.is-active:before {
+    background-image: url(images/traphuman-icon.png);
+}

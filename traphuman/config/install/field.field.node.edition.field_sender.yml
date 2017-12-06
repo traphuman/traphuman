@@ -1,0 +1,19 @@
+uuid: a722e8ed-d8d1-4d9e-aa4c-d1519da99b3d
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sender
+    - node.type.edition
+id: node.edition.field_sender
+field_name: field_sender
+entity_type: node
+bundle: edition
+label: Remitente
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

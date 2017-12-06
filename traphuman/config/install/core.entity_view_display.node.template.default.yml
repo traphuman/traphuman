@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.template.body
+        - field.field.node.template.field_attachment
+        - field.field.node.template.field_company_suplantted
+        - field.field.node.template.field_sender
+        - node.type.template
+    module:
+        - text
+        - user
+id: node.template.default
+targetEntityType: node
+bundle: template
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_default
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    field_attachment:
+        weight: 104
+        label: above
+        settings: {  }
+        third_party_settings: {  }
+        type: file_default
+        region: content
+    field_company_suplantted:
+        weight: 103
+        label: above
+        settings:
+            link_to_entity: false
+        third_party_settings: {  }
+        type: string
+        region: content
+    field_sender:
+        weight: 102
+        label: above
+        settings:
+            link_to_entity: false
+        third_party_settings: {  }
+        type: string
+        region: content
+    links:
+        weight: 100
+hidden: {  }

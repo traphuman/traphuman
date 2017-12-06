@@ -1,0 +1,190 @@
+<?php
+
+/**
+ * @file
+ * Contains traphuman.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Markup;
+
+/**
+ * Implements hook_help().
+ */
+function traphuman_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the traphuman module.
+    case 'help.page.traphuman':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_cron()
+ */
+function traphuman_cron() {
+  $max = \Drupal::config('traphuman.settings')->get('traphuman.maxsendsbycron');
+  $cont = 0;
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $editions = $node_storage->loadByProperties([
+      'type' => 'edition',
+      'field_finish_date' => 0,
+      'status' => 1]);
+  foreach($editions as $nid_edition => $edition) {
+    if($edition->get('field_start_date')->getValue()[0]['value'] < (strtotime(date('Y/m/d H:i:s')))){
+      if ($cont < $max) {
+        if ($mails = $node_storage->loadByProperties([
+            'type' => 'mail',
+            'field_edition' => $edition->id(),
+            'field_sent_date' => 0,
+            'status' => 1])
+        ) {
+          foreach ($mails as $nid_mail => $mail) {
+            if ($cont < $max) {
+              $body = str_replace('{URL}',\Drupal::request()->getHost().'/traphuman/mail/'.$mail->ID(),$edition->get('body')->getValue()[0]['value']);
+              $body = str_replace('{ID}',$mail->ID(),$body);
+              if (_traphuman_mail($mail->get('field_email')->getValue()[0]['value'],
+                  $body,
+                  $mail->getTitle(),
+                  $edition->get('field_sender')->getValue()[0]['value'],
+                  $edition->get('field_company_suplantted')->getValue()[0]['value'],
+                  $edition->get('field_attachment')->getValue()[0]['target_id'])) {
+                $mail->set('field_sent_date', strtotime(date('Y/m/d H:i:s')));
+                $mail->save();
+                $cont++;
+              }
+            } else {
+              break;
+            }
+          }
+        }
+      } else {
+        break;
+      }
+    }
+
+  }
+  $editions = $node_storage->loadByProperties([
+      'type' => 'edition',
+      'field_finish_date' => 0,
+      'status' => 1]);
+  foreach($editions as $nid_edition => $edition) {
+    if (!$mails = $node_storage->loadByProperties([
+        'type' => 'mail',
+        'field_edition' => $edition->id(),
+        'field_sent_date' => 0,
+        'status' => 1])
+    ) {
+      $edition->set('field_finish_date', strtotime(date('Y/m/d H:i:s')));
+      $edition->save();
+    }
+  }
+
+  // Send alarms by Tweet
+  $con = \Drupal\Core\Database\Database::getConnection('default', 'osint');
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $query = \Drupal::entityQuery('tweet_alarm_entity');
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $alarms = $query->execute();
+  $alarm_storage = \Drupal::entityTypeManager()->getStorage('tweet_alarm_entity');
+  foreach($alarms as $alarm_id) {
+    $alarm = $alarm_storage->load($alarm_id);
+    $query_sql = "SELECT * FROM osint.tweets WHERE created_at > '".date('Y/m/d H:i:s', $alarm->getLastsend())."' AND 
+                    screen_name LIKE '".$alarm->getAccount()."';";
+    $query = $con->query($query_sql);
+    $result = $query->fetchAll();
+    if((count($result)) > 0) {
+      $subject = 'Last tweets from '.$alarm->getAccount().' since '.date('Y/m/d H:i:s', $alarm->getLastsend());
+      $body = array();
+      foreach ($result as $key => $tweet) {
+        $body[] = $tweet->tweet_text.' ('.$tweet->created_at.')';
+      }
+      $params['message'] = $body;
+      $params['subject'] = $subject;
+      $params['from'] = 'traphuman@traphuman.com';
+      $params['from_text'] = 'Traphuman';
+      if($mailManager->mail('traphuman', 'send_alarm', $alarm->getMail(), $langcode, $params, NULL, true)) {
+        $alarm->setLastsend(time());
+        $alarm->save();
+      }
+
+
+    }
+
+
+  }
+
+}
+
+function _traphuman_mail($to, $body, $subject, $from, $from_text, $attachment) {
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $params['message'] = $body;
+  $params['subject'] = $subject;
+  $params['from'] = $from;
+  $params['from_text'] = $from_text;
+  if($attachment != 0) {
+    //Attaching a file to the email
+    $protocol = (!empty($_SERVER['HTTPS'])) ? 'https://' : 'http://';
+    $fileLoad = \Drupal\file\Entity\File::load($attachment);
+    $file = new stdClass();
+    $file->uri = str_replace($protocol.'://'.\Drupal::request()->getHost().'/','',file_create_url($fileLoad->getFileUri())); // 'sites/default/files/managed/mountNTFS.pdf'; // File path
+    $file->filename = $fileLoad->getFilename();
+    $file->filemime = $fileLoad->getMimeType(); // 'application/pdf'; //File mime type
+    $params['attachments'][] = $file;
+  }
+
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = true;
+  $result = $mailManager->mail('traphuman', 'send_edition', $to, $langcode, $params, NULL, $send);
+  return $result;
+}
+
+
+/**
+ * Implements hook_mail().
+ */
+function traphuman_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+  switch ($key) {
+    case 'send_edition':
+      $message['headers']['Content-Type'] = SWIFTMAILER_FORMAT_HTML;
+      $message['headers']['From'] = $params['from_text'] . ' <' . $params['from'] . '>';
+      $message['headers']['Reply-To'] = $params['from_text'] . ' <' . $params['from'] . '>';
+      $message['reply-to'] = $params['from'];
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $text[] = $params['message'];
+      $message['body'] = array_map(function ($text) {
+        return Markup::create($text);
+      }, $text);
+      $message['params']['files'] = $params['attachments'];
+     break;
+    case 'send_alarm':
+      $message['headers']['Content-Type'] = SWIFTMAILER_FORMAT_HTML;
+      $message['headers']['From'] = $params['from_text'] . ' <' . $params['from'] . '>';
+      $message['headers']['Reply-To'] = $params['from_text'] . ' <' . $params['from'] . '>';
+      $message['reply-to'] = $params['from'];
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $text[] = $params['message'];
+      $message['body'] = array_map(function ($text) {
+        return Markup::create($text);
+      }, $text);
+      break;
+ }
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function traphuman_toolbar_alter(&$items) {
+  $items['administration']['#attached']['library'][] =
+      'traphuman/traphuman.css';
+}

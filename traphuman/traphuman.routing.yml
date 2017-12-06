@@ -1,0 +1,355 @@
+traphuman.admin_traphuman:
+  path: '/admin/traphuman'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'TrapHuman'
+  requirements:
+    _access: 'TRUE'
+traphuman.admin_traphuman_pentesting:
+  path: '/admin/traphuman/pentesting'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Pentesting'
+  requirements:
+    _access: 'TRUE'
+traphuman.admin_traphuman_osint:
+  path: '/admin/traphuman/osint'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Osint'
+  requirements:
+    _access: 'TRUE'
+traphuman.mainmenu:
+  path: '/traphuman'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanCampaignController::mainmenu'
+    _title: 'Traphuman Menu'
+  requirements:
+    _role: 'htdirector'
+traphuman.campaign_list:
+  path: '/traphuman/campaign-list'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanCampaignController::campaignlist'
+    _title: 'Campaign List'
+  requirements:
+    _role: 'htdirector'
+traphuman.add_campaign:
+  path: '/traphuman/campaign-list/add'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanAddCampaign'
+    _title: 'Add Campaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_campaign:
+  path: '/traphuman/campaign-list/delete/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanCampaignController::deletecampaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_campaign:
+  path: '/traphuman/campaign-list/delete/confirm/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanCampaignController::deleteconfirmcampaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_campaign:
+  path: '/traphuman/campaign-list/edit/{num}'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanAddCampaign'
+    _title: 'Edit Campaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_list:
+  path: '/traphuman/template-list'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::templatelist'
+    _title: 'Template List'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_list_cam:
+  path: '/traphuman/template-list/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::templatelistcam'
+    _title: 'Select Template for Campaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_template:
+  path: '/traphuman/template-list/delete/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::deletetemplate'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_template_cam:
+  path: '/traphuman/template-list/delete/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::deletetemplate'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_template:
+  path: '/traphuman/template-list/delete/confirm/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::deleteconfirmtemplate'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_template_cam:
+  path: '/traphuman/template-list/delete/confirm/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::deleteconfirmtemplate'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_template:
+  path: '/traphuman/template-list/edit/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::edittemplate'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_template_cam:
+  path: '/traphuman/template-list/edit/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::edittemplatecam'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_import:
+  path: '/traphuman/template-list/import'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::templateimport'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_git_import:
+  path: '/traphuman/template-list/import-git'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::templategitimport'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_wizard_step1:
+  path: '/traphuman/template/wizard/step1'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanTemplateWizardStep1Form'
+    _title: 'Template Wizard Step 1 - Naming'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_wizard_step2:
+  path: '/traphuman/template/wizard/step2/{tem}'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanTemplateWizardStep2Form'
+    _title: 'Template Wizard Step 2 - Sender'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_wizard_step3:
+  path: '/traphuman/template/wizard/step3/{tem}'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanTemplateWizardStep3Form'
+    _title: 'Template Wizard Step 3 - Template Body'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_wizard_step4:
+  path: '/traphuman/template/wizard/step4/{tem}'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanTemplateWizardStep4Form'
+    _title: 'Template Wizard Step 4 - Attachment'
+  requirements:
+    _role: 'htdirector'
+traphuman.template_wizard_finish:
+  path: '/traphuman/template/wizard/finish/{tem}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanTemplateController::wizardfinish'
+  requirements:
+    _role: 'htdirector'
+traphuman.contact_list:
+  path: '/traphuman/contact-list'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::contactlist'
+    _title: 'Contact List'
+  requirements:
+    _role: 'htdirector'
+traphuman.contact_list_gru:
+  path: '/traphuman/contact-list/{gru}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::contactlistgru'
+    _title: 'Select Contacts for Group'
+  requirements:
+    _role: 'htdirector'
+traphuman.contact_list_gru_cam:
+  path: '/traphuman/contact-list/{gru}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::contactlistgru'
+    _title: 'Select Contacts for Group'
+  requirements:
+    _role: 'htdirector'
+traphuman.add_contact:
+  path: '/traphuman/contact-list/add'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanContactForm'
+    _title: 'Add Contact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_contact:
+  path: '/traphuman/contact-list/delete/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deletecontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_contact_gru:
+  path: '/traphuman/contact-list/delete/{num}/{gru}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deletecontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_contact_gru_cam:
+  path: '/traphuman/contact-list/delete/{num}/{gru}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deletecontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_contact:
+  path: '/traphuman/contact-list/delete/confirm/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deleteconfirmcontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_contact_gru:
+  path: '/traphuman/contact-list/delete/confirm/{num}/{gru}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deleteconfirmcontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_contact_gru_cam:
+  path: '/traphuman/contact-list/delete/confirm/{num}/{gru}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::deleteconfirmcontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_contact:
+  path: '/traphuman/contact-list/edit/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::editcontact'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_contact_gru:
+  path: '/traphuman/contact-list/edit/{num}/{gru}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::editcontactgru'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_contact_gru_cam:
+  path: '/traphuman/contact-list/edit/{num}/{gru}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactController::editcontactgru'
+  requirements:
+    _role: 'htdirector'
+traphuman.contactgroup_list:
+  path: '/traphuman/contactgroup-list'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::contactgrouplist'
+    _title: 'Contact Group List'
+  requirements:
+    _role: 'htdirector'
+traphuman.contactgroup_list_cam:
+  path: '/traphuman/contactgroup-list/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::contactgrouplistcam'
+    _title: 'Select Groups for Campaign'
+  requirements:
+    _role: 'htdirector'
+traphuman.add_contactgroup:
+  path: '/traphuman/contactgroup-list/add'
+  defaults:
+    _form: '\Drupal\traphuman\Form\TraphumanContactgroupForm'
+    _title: 'Add Contact Group'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_contactgroup:
+  path: '/traphuman/contactgroup-list/delete/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::deletecontactgroup'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_contactgroup_cam:
+  path: '/traphuman/contactgroup-list/delete/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::deletecontactgroup'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_contactgroup:
+  path: '/traphuman/contactgroup-list/delete/confirm/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::deleteconfirmcontactgroup'
+  requirements:
+    _role: 'htdirector'
+traphuman.delete_confirm_contactgroup_cam:
+  path: '/traphuman/contactgroup-list/delete/confirm/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::deleteconfirmcontactgroup'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_contactgroup:
+  path: '/traphuman/contactgroup-list/edit/{num}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::editcontactgroup'
+  requirements:
+    _role: 'htdirector'
+traphuman.edit_contactgroup_cam:
+  path: '/traphuman/contactgroup-list/edit/{num}/{cam}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanContactgroupController::editcontactgroupcam'
+  requirements:
+    _role: 'htdirector'
+traphuman.campaign_editions:
+  path: '/traphuman/campaign/{cam}/editions'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanEditionController::editionlist'
+  requirements:
+    _role: 'htdirector'
+traphuman.campaign_edition_stop:
+  path: '/traphuman/campaign/{cam}/edition/{edi}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanEditionController::editionstop'
+  requirements:
+    _role: 'htdirector'
+traphuman.mail_click_tracking:
+  path: '/traphuman/mail/{mail}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanEditionController::maillinktrack'
+  requirements:
+    _custom_access:  '\Drupal\traphuman\Controller\TraphumanEditionController::maillinktrackaccess'
+traphuman.mail_landing_tracking:
+  path: '/traphuman/mail/landing/{mail}'
+  defaults:
+    _controller: '\Drupal\traphuman\Controller\TraphumanEditionController::landingtrack'
+  requirements:
+    _custom_access:  '\Drupal\traphuman\Controller\TraphumanEditionController::maillinktrackaccess'
+traphuman.osint_tweetconsult:
+  path: '/traphuman/osint/tweetconsult'
+  defaults:
+    _title: 'Tweet Consult'
+    _controller: '\Drupal\traphuman\Controller\TraphumanOsintController::tweetconsult'
+  requirements:
+    _role: 'htdirector'
+traphuman.osint_tweetconsult_page:
+  path: '/traphuman/osint/tweetconsult/{page}'
+  defaults:
+    _title: 'Tweet Consult'
+    _controller: '\Drupal\traphuman\Controller\TraphumanOsintController::tweetconsult'
+  requirements:
+    _role: 'htdirector'
+traphuman.osint_tweetconsult_byday:
+  path: '/traphuman/osint/tweetbyday'
+  defaults:
+    _title: 'Tweet Consult Times By Day'
+    _controller: '\Drupal\traphuman\Controller\TraphumanOsintController::tweetmorebyday'
+  requirements:
+    _role: 'htdirector'
+traphuman.osint_tweetconsult_famousauthor:
+  path: '/traphuman/osint/tweetfamousauthor'
+  defaults:
+    _title: 'Tweet Consult Famous Author'
+    _controller: '\Drupal\traphuman\Controller\TraphumanOsintController::tweetfamousauthor'
+  requirements:
+    _role: 'htdirector'
+traphuman.gathering_info:
+  path: '/traphuman/pentesting/gathering'
+  defaults:
+    _title: 'Gathering info'
+    _controller: '\Drupal\traphuman\Controller\TraphumanPentestingController::gathering'
+  requirements:
+    _role: 'htdirector'

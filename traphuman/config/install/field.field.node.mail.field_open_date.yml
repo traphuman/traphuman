@@ -1,0 +1,21 @@
+uuid: 112c930f-fd17-4b69-9523-44a6182eb503
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_open_date
+    - node.type.mail
+id: node.mail.field_open_date
+field_name: field_open_date
+entity_type: node
+bundle: mail
+label: 'Open date'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1507176995
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

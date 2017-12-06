@@ -1,0 +1,30 @@
+uuid: 70c93d8e-f14d-41df-b5dc-3bcc09d1e9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.mail.body
+    - node.type.mail
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: OxT8-Lg_BDBXVrFQSvOg0yECQ586ZViMIdEeLb81F9s
+id: node.mail.teaser
+targetEntityType: node
+bundle: mail
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

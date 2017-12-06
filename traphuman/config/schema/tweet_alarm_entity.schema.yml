@@ -1,0 +1,21 @@
+traphuman.tweet_alarm_entity.*:
+  type: config_entity
+  label: 'Tweet alarm entity config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    mail:
+      type: string
+      label: 'Email'
+    account:
+      type: string
+      label: 'Twitter Account'
+    lastsend:
+      type: string
+      label: 'Last send'

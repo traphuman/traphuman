@@ -1,0 +1,93 @@
+traphuman.admin_traphuman:
+  title: 'Trap Human'
+  parent: system.admin
+  route_name: traphuman.admin_traphuman
+  description: 'Links to Trap Human module'
+  weight: -11
+traphuman.admin_traphuman_pentesting:
+  title: 'Pentesting'
+  parent: traphuman.admin_traphuman
+  route_name: traphuman.admin_traphuman_pentesting
+  description: 'Pentesting management'
+traphuman.campaign_list:
+  title: 'Campaign administration'
+  description: 'Campaign administration'
+  route_name: traphuman.campaign_list
+  parent: traphuman.admin_traphuman_pentesting
+  weight: 1
+traphuman.template_list:
+  title: 'Template administration'
+  description: 'Template administration'
+  route_name: traphuman.template_list
+  parent: traphuman.admin_traphuman_pentesting
+  weight: 2
+traphuman.template_wizard:
+  title: 'Template wizard'
+  description: 'Template wizard'
+  route_name: traphuman.template_wizard_step1
+  parent: traphuman.template_list
+  weight: 1
+traphuman.contact_list:
+  title: 'Contact administration'
+  description: 'Contact administration'
+  route_name: traphuman.contact_list
+  parent: traphuman.admin_traphuman_pentesting
+  weight: 3
+traphuman.contactgroup_list:
+  title: 'Contact groups administration'
+  description: 'Contact groups administration'
+  route_name: traphuman.contactgroup_list
+  parent: traphuman.admin_traphuman_pentesting
+  weight: 4
+traphuman.gathering_info:
+  title: 'Gathering info'
+  description: 'Gathering info'
+  route_name: traphuman.gathering_info
+  parent: traphuman.admin_traphuman_pentesting
+  weight: 4
+traphuman.admin_traphuman_osint:
+  title: 'Osint'
+  parent: traphuman.admin_traphuman
+  route_name: traphuman.admin_traphuman_osint
+  description: 'Osint consulting'
+traphuman.tweetconsult:
+  title: 'Tweet Consult'
+  parent: traphuman.admin_traphuman_osint
+  route_name: traphuman.osint_tweetconsult
+  description: 'Tweet Consult'
+  weight: 1
+traphuman.osint_tweetconsult_byday:
+  title: 'Tweet Times By Day'
+  parent: traphuman.admin_traphuman_osint
+  route_name: traphuman.osint_tweetconsult_byday
+  description: 'Tweet Times By Day'
+  weight: 2
+traphuman.osint_tweetconsult_famousauthor:
+  title: 'Tweet Famous Author'
+  parent: traphuman.admin_traphuman_osint
+  route_name: traphuman.osint_tweetconsult_famousauthor
+  description: 'Tweet Famous Author'
+  weight: 3
+traphuman.osint_admin_twitterfamousaccount:
+  title: 'Admin Tweet Famous Author'
+  parent: traphuman.osint_tweetconsult_famousauthor
+  route_name: entity.tweet_account_entity.collection
+  description: 'Tweet Famous Author'
+  weight: 1
+# Tweet account entity menu items definition
+entity.tweet_account_entity.collection:
+  title: 'Tweet account entity'
+  route_name: entity.tweet_account_entity.collection
+  description: 'List Tweet account entity (bundles)'
+  parent: system.admin_structure
+  weight: 99
+
+
+# Tweet alarm entity menu items definition
+entity.tweet_alarm_entity.collection:
+  title: 'Tweet alarm entity'
+  route_name: entity.tweet_alarm_entity.collection
+  description: 'List Tweet alarm entity (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

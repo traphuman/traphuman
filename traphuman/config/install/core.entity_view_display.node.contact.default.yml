@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.node.contact.body
+        - field.field.node.contact.field_email
+        - node.type.contact
+    module:
+        - text
+        - user
+id: node.contact.default
+targetEntityType: node
+bundle: contact
+mode: default
+content:
+    body:
+        label: hidden
+        type: text_default
+        weight: 101
+        settings: {  }
+        third_party_settings: {  }
+    field_email:
+        weight: 102
+        label: above
+        settings: {  }
+        third_party_settings: {  }
+        type: basic_string
+        region: content
+    links:
+        weight: 100
+hidden: {  }

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_company_suplantted
+    - node.type.template
+id: node.template.field_company_suplantted
+field_name: field_company_suplantted
+entity_type: node
+bundle: template
+label: 'Company suplantted'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

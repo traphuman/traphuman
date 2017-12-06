@@ -1,0 +1,7 @@
+name: Traphuman
+type: module
+description: 'Traphuman basics.'
+package: Traphuman
+dependencies:
+  - swiftmailer
+core: 8.x
